@@ -39,14 +39,12 @@ public class ObjectPlacer : MonoBehaviour
     [SerializeField] private float _RandomizeScaleIntensity = .2f;
 
     [Header("Layer")]
-    [SerializeField] private bool _SpawnOnSpecificLayer;
     [SerializeField] private LayerMask _Layer;
 
     private void Start()
     {
         if (_Parent == null) _Parent = gameObject;
-        if (!_SpawnOnSpecificLayer) StartCoroutine(SpawnObjects());
-        else if (_SpawnOnSpecificLayer) StartCoroutine(SpawnObjectsOnSpecificLayer());
+        StartCoroutine(SpawnObjectsOnSpecificLayer());
         if (_ShowToLoadingBar) _BarController.SetMaxValue(_Amount); 
     }
 
